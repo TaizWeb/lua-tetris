@@ -10,9 +10,9 @@ function getTetrino(tetrinoType, rotation, x, y, isGhost)
 		7 - '+' with 3 tendrils shape
 	--]]
 	if isGhost then
-		alpha = 150
+		alpha = .5
 	else
-		alpha = 255
+		alpha = 1
 	end
 
 	if tetrinoType == 1 then
