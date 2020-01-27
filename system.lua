@@ -4,6 +4,7 @@ System = {
 	lines = 0
 }
 
+-- reset: Set values back to start
 function System.reset()
 	System.level = 1
 	System.score = 0

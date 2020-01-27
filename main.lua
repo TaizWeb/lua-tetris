@@ -1,12 +1,12 @@
 require("board")
 -- TODO: Design UI (have scores default to 0000000 since it looks nicer)
--- TODO: Add "next block" panel
 -- TODO: Add "high score" panel (with fs storage)
 -- TODO: Add nice animations for line clears and game loss
 -- TODO: Add pausing
 -- TODO: Redesign tetrinos
 -- TODO: Make currentTetrino into a Tetrino Object
 -- TODO: Make the roof 2 blocks higher
+-- BUG: WHEN NEXT TETRINO TYPE IS 3, IT TURNS INVISIBLE
 
 -- Love Resolution: 800 x 600
 -- Tetris board: 10 x 18
@@ -23,6 +23,7 @@ function love.load()
 end
 
 function love.keypressed(key, scancode, isrepeat)
+	-- Move tetrino left/right
 	if (key == "left" or key == "h") and Board.checkPositioning(tetrinoType, rotation, x, y, "moveLeft") then
 		x = x - 1
 	elseif (key == "right" or key == "l") and Board.checkPositioning(tetrinoType, rotation, x, y, "moveRight") then
@@ -31,12 +32,14 @@ function love.keypressed(key, scancode, isrepeat)
 		y = y + 1
 		System.addScore(10)
 		frameCounter = 0
+	-- Rotate tetrino
 	elseif key == "z" and Board.checkSwinging(tetrinoType, rotation, x, y) then
 		if rotation == 270 then
 			rotation = 0
 		else
 			rotation = rotation + 90
 		end
+	-- Place it immediately
 	elseif key == "x" then
 		lowestY = Board.getLowestY(tetrinoType, rotation, x, y)
 		System.addScore(10 * (lowestY - y))
@@ -51,10 +54,11 @@ function love.update(dt)
 			y = y + 1
 		else
 			Board.storeTetrino(tetrinoType, rotation, x, y)
-			-- set cur to next hten calc next again
+			-- set cur to next then calc next again
 			tetrinoType = nextTetrinoType
 			math.randomseed(os.clock())
 			nextTetrinoType = math.ceil(math.random() * 7)
+			print("NEXT TETRINO: " .. nextTetrinoType)
 			-- current bug is next tetrino is right color but not right shape
 			rotation = 0
 			x = 5
@@ -67,13 +71,16 @@ function love.update(dt)
 end
 
 function love.draw()
+	-- Draw board background
 	love.graphics.setColor(100, 100, 100)
 	love.graphics.rectangle('fill', 275, 25, 250, 450)
+	-- Draw next piece preview
 	love.graphics.rectangle('fill', 550, 200, 100, 100)
 	Board.drawNext()
 	Board.drawBoard()
 	Board.drawTetrino(tetrinoType, rotation, x, y)
 	love.graphics.setColor(255, 255, 255)
+	-- Draw debug info
 	love.graphics.print("FPS: " .. tostring(love.timer.getFPS()) .. "\nRotation: " .. tostring(rotation) .. "\nScore: " .. tostring(System.getScore() .. "\nLines: " .. tostring(System.getLines())) .. "\nLevel: " .. tostring(System.getLevel()), 10, 10)
 end
 

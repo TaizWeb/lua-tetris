@@ -9,6 +9,8 @@ function getTetrino(tetrinoType, rotation, x, y, isGhost)
 		6 - backwards 'z' shape
 		7 - '+' with 3 tendrils shape
 	--]]
+
+	-- Making the piece ghost transparent
 	if isGhost then
 		alpha = .5
 	else
@@ -38,6 +40,9 @@ function getTetrino(tetrinoType, rotation, x, y, isGhost)
 			return {{x, y}, {x, y - 1}, {x, y + 1}, {x + 1, y - 1}}
 		end
 	elseif tetrinoType == 3 then
+		-- It seems to loop here
+		print("CURRENT TETRINO IS 3")
+		breakcomputer()
 		love.graphics.setColor(112, 163, 24, alpha)
 		if rotation == 0 or rotation == 180 then
 			return {{x, y}, {x + 1, y}, {x + 1 * 2, y}, {x + 1 * 3, y}}
