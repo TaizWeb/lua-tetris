@@ -87,19 +87,19 @@ end
 
 function getTetrinoColor(tetrinoType)
 	if tetrinoType == 1 then
-		return {255, 165, 0}
+		return {1, 165/255, 0}
 	elseif tetrinoType == 2 then
-		return {0, 0, 255}
+		return {0, 0, 1}
 	elseif tetrinoType == 3 then
-		return {112, 163, 24}
+		return {112/255, 163/255, 24/255}
 	elseif tetrinoType == 4 then
-		return {255, 255, 0}
+		return {1, 1, 0}
 	elseif tetrinoType == 5 then
-		return {255, 0, 0}
+		return {1, 0, 0}
 	elseif tetrinoType == 6 then
-		return {0, 255, 0}
+		return {0, 1, 0}
 	elseif tetrinoType == 7 then
-		return {128, 0, 128}
+		return {.5, 0, .5}
 	end
 end
 
