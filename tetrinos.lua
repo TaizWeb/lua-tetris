@@ -18,7 +18,7 @@ function getTetrino(tetrinoType, rotation, x, y, isGhost)
 	end
 
 	if tetrinoType == 1 then
-		love.graphics.setColor(255, 165, 0, alpha)
+		love.graphics.setColor(1, 165/255, 0, alpha)
 		if rotation == 0 then
 			return {{x, y}, {x - 1, y}, {x - 1, y + 1}, {x + 1, y}}
 		elseif rotation == 90 then
@@ -29,7 +29,7 @@ function getTetrino(tetrinoType, rotation, x, y, isGhost)
 			return {{x, y}, {x, y - 1}, {x, y + 1}, {x + 1, y + 1}}
 		end
 	elseif tetrinoType == 2 then
-		love.graphics.setColor(0, 0, 255, alpha)
+		love.graphics.setColor(0, 0, 1, alpha)
 		if rotation == 0 then
 			return {{x, y}, {x + 1, y}, {x - 1, y}, {x + 1, y + 1}}
 		elseif rotation == 90 then
@@ -40,20 +40,17 @@ function getTetrino(tetrinoType, rotation, x, y, isGhost)
 			return {{x, y}, {x, y - 1}, {x, y + 1}, {x + 1, y - 1}}
 		end
 	elseif tetrinoType == 3 then
-		-- It seems to loop here
-		print("CURRENT TETRINO IS 3")
-		breakcomputer()
-		love.graphics.setColor(112, 163, 24, alpha)
+		love.graphics.setColor(112/255, 163/255, 24/255, alpha)
 		if rotation == 0 or rotation == 180 then
-			return {{x, y}, {x + 1, y}, {x + 1 * 2, y}, {x + 1 * 3, y}}
+			return {{x, y}, {x + 1, y}, {x + 2, y}, {x + 3, y}}
 		elseif rotation == 90 or rotation == 270 then
-			return {{x, y}, {x, y + 1}, {x, y + 1 * 2}, {x, y + 1 * 3}}
+			return {{x, y}, {x, y + 1}, {x, y + 2}, {x, y + 3}}
 		end
 	elseif tetrinoType == 4 then
-		love.graphics.setColor(255, 255, 0, alpha)
+		love.graphics.setColor(1, 1, 0, alpha)
 		return {{x, y}, {x, y + 1}, {x + 1, y}, {x + 1, y + 1}}
 	elseif tetrinoType == 5 then
-		love.graphics.setColor{255, 0, 0, alpha}
+		love.graphics.setColor{1, 0, 0, alpha}
 		if rotation == 0 then
 			return {{x, y}, {x + 1, y + 1}, {x, y + 1}, {x - 1, y}}
 		elseif rotation == 90 then
@@ -64,7 +61,7 @@ function getTetrino(tetrinoType, rotation, x, y, isGhost)
 			return {{x, y}, {x, y + 1}, {x + 1, y - 1}, {x + 1, y}}
 		end
 	elseif tetrinoType == 6 then
-		love.graphics.setColor(0, 255, 0, alpha)
+		love.graphics.setColor(0, 1, 0, alpha)
 		if rotation == 0 then
 			return {{x, y}, {x - 1, y + 1}, {x, y + 1}, {x + 1, y}}
 		elseif rotation == 90 then
@@ -75,7 +72,7 @@ function getTetrino(tetrinoType, rotation, x, y, isGhost)
 			return {{x, y}, {x, y - 1}, {x + 1, y + 1}, {x + 1, y}}
 		end
 	elseif tetrinoType == 7 then
-		love.graphics.setColor(128, 0, 128, alpha)
+		love.graphics.setColor(.5, 0, .5, alpha)
 		if rotation == 0 then
 			return {{x, y}, {x + 1, y}, {x, y + 1}, {x - 1, y}}
 		elseif rotation == 90 then
