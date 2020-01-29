@@ -28,7 +28,6 @@ end
 -- Draws a tetrino by it's blocks onto the Board.board
 function Board.drawTetrino(tetrinoType, rotation, x, y)
 	if Board.checkPositioning(tetrinoType, rotation, x, y - 1, "moveDown") == false then
-		print("I BREAK COMPUTER")
 		print("BOARD RESET")
 		Board.reset()
 		System.reset()
