@@ -20,6 +20,7 @@ end
 
 function Board.drawNext()
 	love.graphics.setColor(getTetrinoColor(nextTetrinoType))
+	nextTetrino = getTetrino(nextTetrinoType, 0, 10, 10)
 	for i = 1, 4 do
 		love.graphics.rectangle('fill', 350 + nextTetrino[i][1] * 25, 0 + nextTetrino[i][2] * 25 - 25, 25, 25)
 	end
