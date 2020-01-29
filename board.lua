@@ -27,8 +27,10 @@ end
 
 -- Draws a tetrino by it's blocks onto the Board.board
 function Board.drawTetrino(tetrinoType, rotation, x, y)
-	if Board.checkPositioning(tetrinoType, rotation, x, y - 1, "moveDown") == false then
-		print("BOARD RESET")
+	-- Perhaps the existence of l is breaking the board and causing a reset loop?
+	if Board.checkPositioning(tetrinoType, rotation, x, y + 1, "moveDown") == false then
+		-- Maybe change checkpositioning to a +1 for y
+		-- Bug: Having the L block screws up loss detection
 		Board.reset()
 		System.reset()
 	end

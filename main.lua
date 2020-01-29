@@ -72,15 +72,16 @@ end
 
 function love.draw()
 	-- Draw board background
-	love.graphics.setColor(100, 100, 100)
+	love.graphics.setColor(100/255, 100/255, 100/255)
 	love.graphics.rectangle('fill', 275, 25, 250, 450)
 	-- Draw next piece preview
 	love.graphics.rectangle('fill', 550, 200, 100, 100)
 	Board.drawNext()
+	-- Draw board and current tetrino
 	Board.drawBoard()
 	Board.drawTetrino(tetrinoType, rotation, x, y)
-	love.graphics.setColor(255, 255, 255)
 	-- Draw debug info
+	love.graphics.setColor(1, 1, 1)
 	love.graphics.print("FPS: " .. tostring(love.timer.getFPS()) .. "\nRotation: " .. tostring(rotation) .. "\nScore: " .. tostring(System.getScore() .. "\nLines: " .. tostring(System.getLines())) .. "\nLevel: " .. tostring(System.getLevel()), 10, 10)
 end
 
