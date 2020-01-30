@@ -6,7 +6,6 @@ require("board")
 -- TODO: Redesign tetrinos
 -- TODO: Make currentTetrino into a Tetrino Object
 -- TODO: Make the roof 2 blocks higher
--- BUG: WHEN NEXT TETRINO TYPE IS 3, IT TURNS INVISIBLE
 
 -- Love Resolution: 800 x 600
 -- Tetris board: 10 x 18
