@@ -49,16 +49,17 @@ end
 
 function love.update(dt)
 	if frameCounter >= 60 - (5 * (System.getLevel() - 1)) then
+		-- If there's space below...
 		if Board.checkPositioning(tetrinoType, rotation, x, y, "moveDown") then
 			y = y + 1
 		else
 			Board.storeTetrino(tetrinoType, rotation, x, y)
+			print("PLACED TETRINO " .. tetrinoType)
 			-- set cur to next then calc next again
 			tetrinoType = nextTetrinoType
 			math.randomseed(os.clock())
 			nextTetrinoType = math.ceil(math.random() * 7)
 			print("NEXT TETRINO: " .. nextTetrinoType)
-			-- current bug is next tetrino is right color but not right shape
 			rotation = 0
 			x = 5
 			y = 1
